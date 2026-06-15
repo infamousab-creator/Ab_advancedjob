@@ -1,0 +1,243 @@
+/* ── Reset & Base ────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: transparent;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+/* ── Panel ───────────────────────────────────── */
+.panel {
+  pointer-events: all;
+  background: linear-gradient(145deg, #1a1e2e, #12151f);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  width: 480px;
+  max-height: 600px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.7);
+  overflow: hidden;
+  animation: slideIn 0.2s ease;
+}
+
+.panel.hidden { display: none; }
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-20px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0)    scale(1); }
+}
+
+/* ── Header ─────────────────────────────────── */
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background: rgba(255,255,255,0.03);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+
+.panel-title {
+  color: #e2e8f0;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: #64748b;
+  font-size: 18px;
+  cursor: pointer;
+  line-height: 1;
+  transition: color 0.15s;
+}
+.close-btn:hover { color: #e2e8f0; }
+
+/* ── Tabs ────────────────────────────────────── */
+.tabs {
+  display: flex;
+  gap: 4px;
+  padding: 12px 20px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+
+.tab {
+  background: none;
+  border: none;
+  padding: 8px 16px;
+  color: #64748b;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 6px 6px 0 0;
+  transition: all 0.15s;
+  margin-bottom: -1px;
+  border-bottom: 2px solid transparent;
+}
+.tab:hover { color: #94a3b8; }
+.tab.active { color: #60a5fa; border-bottom-color: #60a5fa; }
+
+/* ── Tab Content ─────────────────────────────── */
+.tab-content { display: none; flex-direction: column; padding: 16px 20px; gap: 12px; }
+.tab-content.active { display: flex; }
+
+/* ── Search ─────────────────────────────────── */
+.search-bar input {
+  width: 100%;
+  padding: 9px 14px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  color: #e2e8f0;
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+.search-bar input:focus { border-color: #60a5fa; }
+.search-bar input::placeholder { color: #475569; }
+
+/* ── Employee List ───────────────────────────── */
+.list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 380px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #334155 transparent;
+}
+
+.employee-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 8px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.emp-info { flex: 1; }
+.emp-name { color: #e2e8f0; font-size: 14px; font-weight: 500; }
+.emp-grade { color: #64748b; font-size: 11px; margin-top: 2px; }
+
+.emp-actions { display: flex; gap: 6px; }
+
+.badge {
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  background: rgba(96,165,250,0.15);
+  color: #60a5fa;
+}
+.badge.boss { background: rgba(251,191,36,0.15); color: #fbbf24; }
+
+/* ── Society ─────────────────────────────────── */
+.society-balance {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.society-balance .label { color: #64748b; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; }
+.balance { color: #34d399; font-size: 28px; font-weight: 700; }
+
+/* ── Input Row ───────────────────────────────── */
+.input-row {
+  display: flex;
+  gap: 8px;
+}
+
+.input-row input {
+  flex: 1;
+  padding: 9px 14px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  color: #e2e8f0;
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+.input-row input:focus { border-color: #60a5fa; }
+.input-row input::placeholder { color: #475569; }
+
+/* ── Buttons ─────────────────────────────────── */
+.btn {
+  padding: 9px 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+.btn-success { background: rgba(52,211,153,0.15); color: #34d399; }
+.btn-success:hover { background: rgba(52,211,153,0.25); }
+.btn-danger  { background: rgba(248,113,113,0.15); color: #f87171; }
+.btn-danger:hover  { background: rgba(248,113,113,0.25); }
+.btn-primary { background: rgba(96,165,250,0.15); color: #60a5fa; }
+.btn-primary:hover { background: rgba(96,165,250,0.25); }
+.btn-warn    { background: rgba(251,191,36,0.15);  color: #fbbf24; }
+.btn-warn:hover    { background: rgba(251,191,36,0.25); }
+
+.btn-sm { padding: 5px 10px; font-size: 11px; border-radius: 5px; }
+
+/* ── Hint ────────────────────────────────────── */
+.hint { color: #64748b; font-size: 12px; line-height: 1.5; }
+
+/* ── Vehicle Grid ────────────────────────────── */
+.vehicle-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  padding: 16px 20px;
+  overflow-y: auto;
+  max-height: 500px;
+}
+
+.vehicle-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  transition: border-color 0.15s;
+}
+.vehicle-card:hover { border-color: rgba(96,165,250,0.3); }
+
+.vehicle-icon { font-size: 32px; }
+.vehicle-name { color: #e2e8f0; font-size: 13px; font-weight: 600; text-align: center; }
+.vehicle-price { color: #34d399; font-size: 12px; }
+
+/* ── Grade Select ────────────────────────────── */
+select.grade-select {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 5px;
+  color: #e2e8f0;
+  padding: 4px 8px;
+  font-size: 11px;
+  cursor: pointer;
+  outline: none;
+}
